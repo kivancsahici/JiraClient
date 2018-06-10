@@ -23,7 +23,12 @@ import org.eclipse.ui.part.ViewPart;
 public class NavigationView extends ViewPart {
 	public static final String ID = "huseyin.navigationView";
 	private TreeViewer viewer;
-	 
+	
+	public void setInput() {
+		viewer.setInput(createDummyModel());
+	}
+	
+	
 	class TreeObject {
 		private String name;
 		private TreeParent parent;
@@ -146,7 +151,7 @@ public class NavigationView extends ViewPart {
 		viewer.setContentProvider(new ViewContentProvider());
 		final ViewLabelProvider labelProvider = new ViewLabelProvider();
 		viewer.setLabelProvider(labelProvider);
-		viewer.setInput(createDummyModel());
+		//viewer.setInput(createDummyModel());
 		
 		
 		viewer.addSelectionChangedListener(new ISelectionChangedListener() {

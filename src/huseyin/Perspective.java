@@ -25,9 +25,6 @@ public class Perspective implements IPerspectiveFactory {
 		folder.addPlaceholder(TableView.ID + ":*");
 		folder.addView(TableView.ID);
 		
-		folder.addPlaceholder(AhmetView.ID + ":*");
-		folder.addView(AhmetView.ID);
-		
 		layout.getViewLayout(NavigationView.ID).setCloseable(false);
 	}
 }
