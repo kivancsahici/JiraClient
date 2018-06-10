@@ -14,7 +14,7 @@ public class LoginDialogAction extends Action {
   public LoginDialogAction(IWorkbenchWindow window) {
 	  this.window = window;
 	  setId(ICommandIds.CMD_OPEN_LOGIN);
-	  setImageDescriptor(huseyin.Activator.getImageDescriptor("/icons/sample3.gif"));
+	  setImageDescriptor(huseyin.Activator.getImageDescriptor("/icons/cls16.gif"));
   }
   
   public void run() {
