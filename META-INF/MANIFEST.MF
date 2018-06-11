@@ -34,4 +34,6 @@ Bundle-ClassPath: lib/aopalliance-repackaged-2.3.0-b10.jar,
  lib/jersey-media-json-jackson-2.13.jar,
  lib/joda-time-2.9.2.jar,
  lib/junit-4.12.jar,
- lib/osgi-resource-locator-1.0.1.jar
+ lib/osgi-resource-locator-1.0.1.jar,
+ src/,
+ .

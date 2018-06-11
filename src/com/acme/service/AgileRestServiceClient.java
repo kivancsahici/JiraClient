@@ -25,8 +25,9 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class AgileRestServiceClient {
 	private static final String UM_SERVICE_URL = "https://dashing-mock-api.herokuapp.com/issues";
+	//private static final String UM_SERVICE_URL = "http://localhost:3000/issues";
 	
-	public static void callService() {
+	public static List<AgileIssue> callService() {
 		ClientConfig clientConfig = new ClientConfig();    
 	    clientConfig.property(ClientProperties.READ_TIMEOUT, 5000);
 	    clientConfig.property(ClientProperties.CONNECT_TIMEOUT, 2000);
@@ -46,11 +47,12 @@ public class AgileRestServiceClient {
 			    JsonParser jp = f.createParser(response.readEntity(String.class));
 			    TypeReference<List<AgileIssue>> tRef = new TypeReference<List<AgileIssue>>() {};
 			    lstUser = mapper.readValue(jp, tRef);
-			    
+			    return lstUser;
+			    /*
 			    for (AgileIssue user : lstUser) {
 			        System.out.println(user.getKey());
 			        System.out.println(user.getFields().getAssignee().getAvatarUrls().getX4848());
-			    }
+			    }*/
 
 			} catch (JsonGenerationException e) {
 			    e.printStackTrace();
@@ -58,18 +60,20 @@ public class AgileRestServiceClient {
 			    e.printStackTrace();
 			} catch (IOException e) {
 			    e.printStackTrace();
-			}	
+			}
+			return null;
 		}
 		catch(ProcessingException | WebApplicationException e) {
 			e.printStackTrace();
+			return null;
 			//silently ignore, we don't want to block mantra if Mule is down for whatever reason
 		}
 	}
-	
+	/*
 	public static void main(String[] args) {
 		System.setProperty("https.proxyHost", "localhost");
 		System.setProperty("https.proxyPort", "3128");
 
 		callService();
-	}
+	}*/
 }

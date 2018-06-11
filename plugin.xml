@@ -41,6 +41,11 @@
             name="Huseyin"
             restorable="true">
       </view>
+      <view
+            class="com.acme.rpc.view.AgileIssueView"
+            id="com.acme.rpc.view.AgileIssueView"
+            name="AgileIssue">
+      </view>
    </extension>
    <extension
          point="org.eclipse.ui.commands">

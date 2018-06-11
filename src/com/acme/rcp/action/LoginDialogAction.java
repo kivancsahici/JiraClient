@@ -12,6 +12,8 @@ import org.eclipse.ui.IViewPart;
 import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.IWorkbenchWindow;
 
+import com.acme.service.AgileRestServiceClient;
+
 public class LoginDialogAction extends Action {
 	private final IWorkbenchWindow window;
   public LoginDialogAction(IWorkbenchWindow window) {
@@ -32,7 +34,7 @@ public class LoginDialogAction extends Action {
 		  //IViewPart view = page.showView(MainView.ID)  //id de la view in plugin.xml
 		  //page.hideView(page.findView(SitesView.ID));
 		  NavigationView view = (NavigationView)page.findView(NavigationView.ID);
-		  view.setInput();
+		  view.setInput(AgileRestServiceClient.callService());
 		 
 	  }
       //.openInformation(window.getShell(), "Open", "Open Message Dialog!");
