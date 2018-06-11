@@ -1,6 +1,6 @@
 package com.acme.service.entity;
 
-public class AgileIssue {
+public class AgileIssue implements Comparable<AgileIssue>{
 	public String getKey() {
 		return key;
 	}
@@ -15,4 +15,16 @@ public class AgileIssue {
 	}
 	private String key;
 	private Fields fields;
+	@Override
+	public int compareTo(AgileIssue o) {
+		// TODO Auto-generated method stub
+		int id = this.getFields().getStatus().getStatusCategory().getId();
+		int thatId = o.getFields().getStatus().getStatusCategory().getId();
+		if(id == thatId)  
+			return 0;  
+		else if(id > thatId)  
+			return 1;  
+		else  
+			return -1;  
+	}
 }

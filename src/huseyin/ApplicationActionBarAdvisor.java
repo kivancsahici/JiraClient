@@ -20,6 +20,7 @@ import org.eclipse.ui.application.IActionBarConfigurer;
 import com.acme.rcp.action.LoginDialogAction;
 import com.acme.rcp.action.MessagePopupAction;
 import com.acme.rcp.action.OpenViewAction;
+import com.acme.rpc.view.AgileIssueView;
 
 /**
  * An action bar advisor is responsible for creating, adding, and disposing of the
@@ -62,7 +63,8 @@ public class ApplicationActionBarAdvisor extends ActionBarAdvisor {
         openViewAction = new OpenViewAction(window, "Open Another Message View", View.ID);
         register(openViewAction);
         
-        messagePopupAction = new MessagePopupAction("Open Message", window);
+        //messagePopupAction = new MessagePopupAction("Open Message", window);
+        messagePopupAction = new MessagePopupAction(window, "Open Message", AgileIssueView.ID);
         register(messagePopupAction);
         
         loginDialogAction = new LoginDialogAction(window);
