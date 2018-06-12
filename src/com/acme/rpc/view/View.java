@@ -1,4 +1,4 @@
-package huseyin;
+package com.acme.rpc.view;
 
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.resource.JFaceResources;

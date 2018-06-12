@@ -25,18 +25,18 @@
             name="Message"
             allowMultiple="true"
             icon="icons/sample2.gif"
-            class="huseyin.View"
+            class="com.acme.rpc.view.View"
             id="huseyin.view">
       </view>
       <view
             name="Mailboxes"
             allowMultiple="true"
             icon="icons/sample3.gif"
-            class="huseyin.NavigationView"
+            class="com.acme.rpc.view.NavigationView"
             id="huseyin.navigationView">
       </view>
       <view
-            class="huseyin.TableView"
+            class="com.acme.rpc.view.TableView"
             id="huseyin.tableView"
             name="Huseyin"
             restorable="true">
