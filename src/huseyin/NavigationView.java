@@ -5,6 +5,8 @@ import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 import org.eclipse.jface.action.IStatusLineManager;
+import org.eclipse.jface.viewers.DoubleClickEvent;
+import org.eclipse.jface.viewers.IDoubleClickListener;
 import org.eclipse.jface.viewers.ISelectionChangedListener;
 import org.eclipse.jface.viewers.IStructuredContentProvider;
 import org.eclipse.jface.viewers.IStructuredSelection;
@@ -66,7 +68,7 @@ public class NavigationView extends ViewPart {
 				parent.addChild(new TreeObject(issue.getFields().getSummary()));
 			}
 			root.addChild(parent);
-		}	
+		}
 			
 		viewer.setInput(root);
 
@@ -209,9 +211,33 @@ public class NavigationView extends ViewPart {
 		viewer.setLabelProvider(labelProvider);
 		// viewer.setInput(createDummyModel());
 
+		viewer.addDoubleClickListener(new IDoubleClickListener() {
+		    @Override
+		    public void doubleClick(DoubleClickEvent event) {
+		    	IStatusLineManager manager = getViewSite().getActionBars().getStatusLineManager();
+		        TreeViewer viewer = (TreeViewer) event.getViewer();
+		        IStructuredSelection selection = (IStructuredSelection) event.getSelection();
+		        //Object selectedNode = thisSelection.getFirstElement();
+		        //viewer.setExpandedState(selectedNode, !viewer.getExpandedState(selectedNode));
+		        StringBuffer toShow = new StringBuffer();
+				for (Iterator iterator = selection.iterator(); iterator.hasNext();) {
+					Object domain = (/* Model */TreeObject) iterator.next();
+					String value = labelProvider.getText(domain);
+					toShow.append(value);
+					toShow.append(", ");
+				}
+				// remove the trailing comma space pair
+				if (toShow.length() > 0) {
+					toShow.setLength(toShow.length() - 2);
+				}
+				// text.setText(toShow.toString());
+				manager.setMessage(toShow.toString());
+		    }
+		});
+		/*
 		viewer.addSelectionChangedListener(new ISelectionChangedListener() {
 			public void selectionChanged(SelectionChangedEvent event) {
-				System.out.println(event);
+				
 				IStatusLineManager manager = getViewSite().getActionBars().getStatusLineManager();
 				manager.setMessage("Information for the status line");
 				// if the selection is empty clear the label
@@ -225,7 +251,7 @@ public class NavigationView extends ViewPart {
 					IStructuredSelection selection = (IStructuredSelection) event.getSelection();
 					StringBuffer toShow = new StringBuffer();
 					for (Iterator iterator = selection.iterator(); iterator.hasNext();) {
-						Object domain = (/* Model */TreeObject) iterator.next();
+						Object domain = (TreeObject) iterator.next();
 						String value = labelProvider.getText(domain);
 						toShow.append(value);
 						toShow.append(", ");
@@ -238,7 +264,7 @@ public class NavigationView extends ViewPart {
 					manager.setMessage(toShow.toString());
 				}
 			}
-		});
+		});*/
 	}
 
 	/**

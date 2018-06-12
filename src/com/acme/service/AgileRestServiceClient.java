@@ -24,13 +24,13 @@ import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class AgileRestServiceClient {
-	private static final String UM_SERVICE_URL = "https://dashing-mock-api.herokuapp.com/issues";
-	//private static final String UM_SERVICE_URL = "http://localhost:3000/issues";
+	//private static final String UM_SERVICE_URL = "https://dashing-mock-api.herokuapp.com/issues";
+	private static final String UM_SERVICE_URL = "http://localhost:3000/issues";
 	
 	public static List<AgileIssue> callService() {
 		ClientConfig clientConfig = new ClientConfig();    
-	    clientConfig.property(ClientProperties.READ_TIMEOUT, 5000);
-	    clientConfig.property(ClientProperties.CONNECT_TIMEOUT, 2000);
+	    clientConfig.property(ClientProperties.READ_TIMEOUT, 10000);
+	    clientConfig.property(ClientProperties.CONNECT_TIMEOUT, 5000);
 	    
 	    ClientBuilder builder = new JerseyClientBuilder();
 	    Client client = builder.withConfig(clientConfig).build();
