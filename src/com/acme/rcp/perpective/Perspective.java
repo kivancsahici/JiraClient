@@ -1,4 +1,4 @@
-package huseyin;
+package com.acme.rcp.perpective;
 
 import org.eclipse.ui.IFolderLayout;
 import org.eclipse.ui.IPageLayout;

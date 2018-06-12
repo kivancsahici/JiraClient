@@ -15,7 +15,7 @@
          point="org.eclipse.ui.perspectives">
       <perspective
             name="RCP Perspective"
-            class="huseyin.Perspective"
+            class="com.acme.rcp.perpective.Perspective"
             id="huseyin.perspective">
       </perspective>
    </extension>
