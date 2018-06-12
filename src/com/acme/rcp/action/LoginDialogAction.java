@@ -45,8 +45,8 @@ public class LoginDialogAction extends Action {
 					// Fields fields = new Fields("mehmet");
 					// AgileIssue issue = new AgileIssue("pik32", fields);
 					AgileIssueView views = (AgileIssueView) ref.getView(false);
-					views.updateModel(list.get(0).getFields().getAssignee()
-							.getName());
+					//views.updateModel(list.get(0).getFields().getAssignee().getName());
+					views.updateModel(list.get(0));
 
 				}
 			}
