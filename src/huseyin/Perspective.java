@@ -4,6 +4,8 @@ import org.eclipse.ui.IFolderLayout;
 import org.eclipse.ui.IPageLayout;
 import org.eclipse.ui.IPerspectiveFactory;
 
+import com.acme.rpc.view.AgileIssueView;
+
 public class Perspective implements IPerspectiveFactory {
 
 	/**
@@ -22,8 +24,11 @@ public class Perspective implements IPerspectiveFactory {
 		folder.addView(View.ID);
 		*/
 		
-		folder.addPlaceholder(TableView.ID + ":*");
-		folder.addView(TableView.ID);
+		//folder.addPlaceholder(TableView.ID + ":*");
+		//folder.addView(TableView.ID);
+		
+		folder.addPlaceholder(AgileIssueView.ID + ":*");
+		folder.addView(AgileIssueView.ID);
 		
 		layout.getViewLayout(NavigationView.ID).setCloseable(false);
 	}
