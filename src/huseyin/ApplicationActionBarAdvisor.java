@@ -21,6 +21,7 @@ import com.acme.rcp.action.LoginDialogAction;
 import com.acme.rcp.action.MessagePopupAction;
 import com.acme.rcp.action.OpenViewAction;
 import com.acme.rpc.view.AgileIssueView;
+import com.acme.rpc.view.View;
 
 /**
  * An action bar advisor is responsible for creating, adding, and disposing of the

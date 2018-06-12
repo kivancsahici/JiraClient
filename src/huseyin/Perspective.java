@@ -5,6 +5,7 @@ import org.eclipse.ui.IPageLayout;
 import org.eclipse.ui.IPerspectiveFactory;
 
 import com.acme.rpc.view.AgileIssueView;
+import com.acme.rpc.view.NavigationView;
 
 public class Perspective implements IPerspectiveFactory {
 
