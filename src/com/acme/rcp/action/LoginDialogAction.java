@@ -1,13 +1,14 @@
 package com.acme.rcp.action;
 
 import huseyin.ICommandIds;
-import huseyin.LoginDialog;
 import java.util.List;
 import org.eclipse.jface.action.Action;
 import org.eclipse.jface.window.Window;
 import org.eclipse.ui.IViewReference;
 import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.IWorkbenchWindow;
+
+import com.acme.rcp.dialog.LoginDialog;
 import com.acme.rpc.view.AgileIssueView;
 import com.acme.rpc.view.NavigationView;
 import com.acme.service.AgileRestServiceClient;
