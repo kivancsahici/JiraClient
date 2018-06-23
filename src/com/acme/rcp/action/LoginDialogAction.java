@@ -1,8 +1,11 @@
 package com.acme.rcp.action;
 
 import huseyin.ICommandIds;
+
+import java.util.ArrayList;
 import java.util.List;
 import org.eclipse.jface.action.Action;
+import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.window.Window;
 import org.eclipse.ui.IViewReference;
 import org.eclipse.ui.IWorkbenchPage;
@@ -16,20 +19,35 @@ import com.acme.service.entity.AgileIssue;
 
 public class LoginDialogAction extends Action {
 	private final IWorkbenchWindow window;
+	private boolean loggedIn;
+
 
 	public LoginDialogAction(IWorkbenchWindow window) {
+		super(null, IAction.AS_CHECK_BOX);
+		this.loggedIn = false;
 		this.window = window;
 		setId(ICommandIds.CMD_OPEN_LOGIN);
-		setImageDescriptor(huseyin.Activator
-				.getImageDescriptor("/icons/cls16.gif"));
+		setImageDescriptor(huseyin.Activator.getImageDescriptor("/icons/login.png"));
 	}
 
 	public void run() {
+		if(this.loggedIn) {
+			//super.setChecked(false);			
+			//means log out
+			this.loggedIn = false;
+			IWorkbenchPage page = window.getActivePage();
+			NavigationView view = (NavigationView) page.findView(NavigationView.ID);
+			view.setInput(new ArrayList<AgileIssue>());
+			return;
+		}
+
 		LoginDialog dialog = new LoginDialog(window.getShell());
 		// dialog.open();
 		if (dialog.open() != Window.OK) {
 			System.out.println("user pressed cancel");
+			super.setChecked(false);
 		} else {
+			loggedIn = true;
 			IWorkbenchPage page = window.getActivePage();
 			// IViewPart view = page.showView(MainView.ID) //id de la view in
 			// plugin.xml
