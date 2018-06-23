@@ -69,8 +69,8 @@ public class LoginDialog extends Dialog {
 		CLabel lblNewLabel_1 = new CLabel(container, SWT.NONE);
 		lblNewLabel_1.setImage(SWTResourceManager.getImage(LoginDialog.class, "/huseyin/logo.png"));
 		FormData fd_lblNewLabel_1 = new FormData();
-		fd_lblNewLabel_1.top = new FormAttachment(0, 26);
-		fd_lblNewLabel_1.right = new FormAttachment(100, -184);
+		fd_lblNewLabel_1.bottom = new FormAttachment(text, -14);
+		fd_lblNewLabel_1.right = new FormAttachment(100, -140);
 		lblNewLabel_1.setLayoutData(fd_lblNewLabel_1);
 		lblNewLabel_1.setText("");
 
