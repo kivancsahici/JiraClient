@@ -19,13 +19,17 @@ import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.ISharedImages;
+import org.eclipse.ui.IWorkbenchPage;
+import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
+import org.eclipse.ui.handlers.HandlerUtil;
 import org.eclipse.ui.part.ViewPart;
 
 import com.acme.service.entity.AgileIssue;
 
 public class NavigationView extends ViewPart {
 	public static final String ID = "huseyin.navigationView";
+	private int instanceNum = 0;
 	private TreeViewer viewer;
 
 	public void setInput(List<AgileIssue> issues) {
@@ -49,7 +53,8 @@ public class NavigationView extends ViewPart {
 		if(todo.size() > 0) {
 			TreeParent parent = new TreeParent("TO-DO");
 			for(AgileIssue issue : todo) {
-				parent.addChild(new TreeObject(issue.getFields().getSummary()));
+				//parent.addChild(new TreeObject(issue.getFields().getSummary()));
+				parent.addChild(new TreeObject(issue));
 			}
 			root.addChild(parent);
 		}
@@ -57,7 +62,8 @@ public class NavigationView extends ViewPart {
 		if(inprog.size() > 0) {
 			TreeParent parent = new TreeParent("IN-PROGRESS");
 			for(AgileIssue issue : inprog) {
-				parent.addChild(new TreeObject(issue.getFields().getSummary()));
+				//parent.addChild(new TreeObject(issue.getFields().getSummary()));
+				parent.addChild(new TreeObject(issue));
 			}
 			root.addChild(parent);
 		}
@@ -65,7 +71,8 @@ public class NavigationView extends ViewPart {
 		if(completed.size() > 0) {
 			TreeParent parent = new TreeParent("COMPLETED");
 			for(AgileIssue issue : completed) {
-				parent.addChild(new TreeObject(issue.getFields().getSummary()));
+				//parent.addChild(new TreeObject(issue.getFields().getSummary()));
+				parent.addChild(new TreeObject(issue));
 			}
 			root.addChild(parent);
 		}
@@ -78,15 +85,24 @@ public class NavigationView extends ViewPart {
 	}
 
 	class TreeObject {
-		private String name;
-		private TreeParent parent;
-
-		public TreeObject(String name) {
-			this.name = name;
+		public AgileIssue getIssue() {
+			return issue;
 		}
 
-		public String getName() {
-			return name;
+		public void setIssue(AgileIssue issue) {
+			this.issue = issue;
+		}
+		
+		private TreeParent parent;
+		private AgileIssue issue;
+		private String name;
+
+		public TreeObject(AgileIssue issue) {
+			this.issue = issue;
+		}
+		
+		public TreeObject(String name) {
+			this.name = name;
 		}
 
 		public void setParent(TreeParent parent) {
@@ -98,15 +114,17 @@ public class NavigationView extends ViewPart {
 		}
 
 		public String toString() {
-			return getName();
+			return issue.getKey();
 		}
 	}
 
-	class TreeParent extends TreeObject {
+	class TreeParent extends TreeObject 
+	{
 		private ArrayList children;
-
+		private String name;
 		public TreeParent(String name) {
 			super(name);
+			this.name = name;
 			children = new ArrayList();
 		}
 
@@ -126,6 +144,9 @@ public class NavigationView extends ViewPart {
 
 		public boolean hasChildren() {
 			return children.size() > 0;
+		}
+		public String toString() {
+			return this.name;
 		}
 	}
 
@@ -206,7 +227,8 @@ public class NavigationView extends ViewPart {
 	 */
 	public void createPartControl(Composite parent) {
 		viewer = new TreeViewer(parent, SWT.MULTI | SWT.H_SCROLL | SWT.V_SCROLL | SWT.BORDER);
-		viewer.setContentProvider(new ViewContentProvider());
+		final ViewContentProvider contentProvider = new ViewContentProvider(); 
+		viewer.setContentProvider(contentProvider);
 		final ViewLabelProvider labelProvider = new ViewLabelProvider();
 		viewer.setLabelProvider(labelProvider);
 		// viewer.setInput(createDummyModel());
@@ -214,6 +236,19 @@ public class NavigationView extends ViewPart {
 		viewer.addDoubleClickListener(new IDoubleClickListener() {
 		    @Override
 		    public void doubleClick(DoubleClickEvent event) {
+		    	/*
+		    	try {
+					AgileIssueView view = (AgileIssueView) PlatformUI.getWorkbench().getActiveWorkbenchWindow().
+							getActivePage().showView(AgileIssueView.ID, Integer.toString(instanceNum++), IWorkbenchPage.VIEW_ACTIVATE);
+					
+					views.updateModel(list.get(0));
+					
+				} catch (PartInitException e) {					
+					e.printStackTrace();
+				}
+		    	*/
+		    	
+
 		    	IStatusLineManager manager = getViewSite().getActionBars().getStatusLineManager();
 		        TreeViewer viewer = (TreeViewer) event.getViewer();
 		        IStructuredSelection selection = (IStructuredSelection) event.getSelection();
@@ -223,6 +258,28 @@ public class NavigationView extends ViewPart {
 				for (Iterator iterator = selection.iterator(); iterator.hasNext();) {
 					Object domain = (/* Model */TreeObject) iterator.next();
 					String value = labelProvider.getText(domain);
+					if(!(domain instanceof TreeParent)) {
+						TreeObject obj = (TreeObject) domain;
+						AgileIssue issue = obj.getIssue();
+						System.out.println(issue.getKey());
+						
+						AgileIssueView view;
+						try {
+							view = (AgileIssueView) PlatformUI.getWorkbench().getActiveWorkbenchWindow().
+									getActivePage().showView(AgileIssueView.ID, Integer.toString(instanceNum++), IWorkbenchPage.VIEW_ACTIVATE);
+							view.updateModel(issue);
+						} catch (PartInitException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+						
+						
+						
+					}
+					
+					//Object object = contentProvider.getParent(domain);
+					//Object[] objects = contentProvider..getElements(object);
+					
 					toShow.append(value);
 					toShow.append(", ");
 				}
@@ -234,37 +291,6 @@ public class NavigationView extends ViewPart {
 				manager.setMessage(toShow.toString());
 		    }
 		});
-		/*
-		viewer.addSelectionChangedListener(new ISelectionChangedListener() {
-			public void selectionChanged(SelectionChangedEvent event) {
-				
-				IStatusLineManager manager = getViewSite().getActionBars().getStatusLineManager();
-				manager.setMessage("Information for the status line");
-				// if the selection is empty clear the label
-
-				if (event.getSelection().isEmpty()) {
-					// text.setText("");
-					manager.setMessage("");
-					return;
-				}
-				if (event.getSelection() instanceof IStructuredSelection) {
-					IStructuredSelection selection = (IStructuredSelection) event.getSelection();
-					StringBuffer toShow = new StringBuffer();
-					for (Iterator iterator = selection.iterator(); iterator.hasNext();) {
-						Object domain = (TreeObject) iterator.next();
-						String value = labelProvider.getText(domain);
-						toShow.append(value);
-						toShow.append(", ");
-					}
-					// remove the trailing comma space pair
-					if (toShow.length() > 0) {
-						toShow.setLength(toShow.length() - 2);
-					}
-					// text.setText(toShow.toString());
-					manager.setMessage(toShow.toString());
-				}
-			}
-		});*/
 	}
 
 	/**

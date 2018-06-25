@@ -28,8 +28,8 @@ public class Perspective implements IPerspectiveFactory {
 		//folder.addPlaceholder(TableView.ID + ":*");
 		//folder.addView(TableView.ID);
 		
-		folder.addPlaceholder(AgileIssueView.ID + ":*");
-		folder.addView(AgileIssueView.ID);
+		//folder.addPlaceholder(AgileIssueView.ID + ":*");
+		//folder.addView(AgileIssueView.ID);
 		
 		layout.getViewLayout(NavigationView.ID).setCloseable(false);
 	}

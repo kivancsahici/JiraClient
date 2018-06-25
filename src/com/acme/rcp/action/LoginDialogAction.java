@@ -52,22 +52,18 @@ public class LoginDialogAction extends Action {
 			// IViewPart view = page.showView(MainView.ID) //id de la view in
 			// plugin.xml
 			// page.hideView(page.findView(SitesView.ID));
-			NavigationView view = (NavigationView) page
-					.findView(NavigationView.ID);
+			NavigationView view = (NavigationView) page.findView(NavigationView.ID);
 			List<AgileIssue> list = AgileRestServiceClient.callService();
 			view.setInput(list);
-
+			/*	
 			IViewReference[] refs = page.getViewReferences();
 			for (IViewReference ref : refs) {
-				if (ref.getView(false).getClass().equals(AgileIssueView.class)) {
-					// Fields fields = new Fields("mehmet");
-					// AgileIssue issue = new AgileIssue("pik32", fields);
-					AgileIssueView views = (AgileIssueView) ref.getView(false);
-					//views.updateModel(list.get(0).getFields().getAssignee().getName());
+				if (ref.getView(false).getClass().equals(AgileIssueView.class)) {					
+					AgileIssueView views = (AgileIssueView) ref.getView(false);					
 					views.updateModel(list.get(0));
 
 				}
-			}
+			}*/
 		}
 		// .openInformation(window.getShell(), "Open", "Open Message Dialog!");
 	}
