@@ -16,7 +16,7 @@
       <perspective
             name="RCP Perspective"
             class="com.acme.rcp.perpective.Perspective"
-            id="huseyin.perspective">
+            id="jiraClient.perspective">
       </perspective>
    </extension>
    <extension
@@ -26,24 +26,24 @@
             allowMultiple="true"
             icon="icons/sample2.gif"
             class="com.acme.rpc.view.View"
-            id="huseyin.view">
+            id="jiraClient.view">
       </view>
       <view
             name="Mailboxes"
             allowMultiple="true"
             icon="icons/sample3.gif"
             class="com.acme.rpc.view.NavigationView"
-            id="huseyin.navigationView">
+            id="jiraClient.navigationView">
       </view>
       <view
             class="com.acme.rpc.view.TableView"
-            id="huseyin.tableView"
-            name="Huseyin"
+            id="jiraClient.tableView"
+            name="JiraClient"
             restorable="true">
       </view>
       <view
             class="com.acme.rpc.view.AgileIssueView"
-            id="com.acme.rpc.view.AgileIssueView"
+            id="jiraClient.AgileIssueView"
             name="AgileIssue">
       </view>
    </extension>
@@ -51,36 +51,36 @@
          point="org.eclipse.ui.commands">
       <category
             name="Mail"
-            id="huseyin.category">
+            id="jiraClient.category">
       </category>
       <command
             name="Open Mailbox"
             description="Opens a mailbox"
-            categoryId="huseyin.category"
-            id="huseyin.open">
+            categoryId="jiraClient.category"
+            id="jiraClient.open">
       </command>
       <command
             name="Open Message Dialog"
             description="Open a message dialog"
-            categoryId="huseyin.category"
-            id="huseyin.openMessage">
+            categoryId="jiraClient.category"
+            id="jiraClient.openMessage">
       </command>
       <command
-            categoryId="huseyin.category"
+            categoryId="jiraClient.category"
             description="Open a login dialog"
-            id="huseyin.openLogin"
+            id="jiraClient.openLogin"
             name="Open Login Dialog">
       </command>
    </extension>
    <extension
          point="org.eclipse.ui.bindings">
       <key
-            commandId="huseyin.open"
+            commandId="jiraClient.open"
             schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
             sequence="CTRL+2">
       </key>
       <key
-            commandId="huseyin.openMessage"
+            commandId="jiraClient.openMessage"
             schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
             sequence="CTRL+3">
       </key>
@@ -94,7 +94,7 @@
          id="product"
          point="org.eclipse.core.runtime.products">
       <product
-            application="huseyin.application"
+            application="jiraClient.application"
             name="RCP Product">
          <property
                name="aboutText"

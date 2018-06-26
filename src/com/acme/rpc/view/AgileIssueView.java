@@ -50,7 +50,7 @@ public class AgileIssueView extends ViewPart {
 	// private AgileIssue agileIssue;
 	// private WritableValue agileIssueValue = new WritableValue();
 
-	public static final String ID = "com.acme.rpc.view.AgileIssueView";
+	public static final String ID = "jiraClient.AgileIssueView";
 	private Text textName;
 	private Text textStatus;
 	private Text textTitle;

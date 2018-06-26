@@ -9,8 +9,8 @@ package com.acme.rcp.app;
  */
 public interface ICommandIds {
 
-    public static final String CMD_OPEN = "huseyin.open";
-    public static final String CMD_OPEN_MESSAGE = "huseyin.openMessage";
-    public static final String CMD_OPEN_LOGIN = "huseyin.openLogin";
+    public static final String CMD_OPEN = "jiraClient.open";
+    public static final String CMD_OPEN_MESSAGE = "jiraClient.openMessage";
+    public static final String CMD_OPEN_LOGIN = "jiraClient.openLogin";
     
 }
