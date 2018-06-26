@@ -1,7 +1,7 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: Huseyin
-Bundle-SymbolicName: huseyin; singleton:=true
+Bundle-Name: JiraClient
+Bundle-SymbolicName: jiraClient;singleton:=true
 Bundle-Version: 1.0.0.qualifier
 Bundle-Activator: com.acme.rcp.app.Activator
 Require-Bundle: org.eclipse.ui,

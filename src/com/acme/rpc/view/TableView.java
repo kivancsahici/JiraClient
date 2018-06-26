@@ -28,7 +28,7 @@ import de.vogella.jface.tableviewer.model.ModelProvider;
 import de.vogella.jface.tableviewer.model.Person;
 
 public class TableView extends ViewPart {
-	public static final String ID = "huseyin.tableView";
+	public static final String ID = "jiraClient.tableView";
 	private TableViewer viewer;
 	private final ImageDescriptor CHECKED = getImageDescriptor("checked.gif");
 	private final ImageDescriptor UNCHECKED = getImageDescriptor("unchecked.gif");

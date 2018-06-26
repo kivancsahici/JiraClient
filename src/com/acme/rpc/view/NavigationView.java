@@ -28,7 +28,7 @@ import org.eclipse.ui.part.ViewPart;
 import com.acme.service.entity.AgileIssue;
 
 public class NavigationView extends ViewPart {
-	public static final String ID = "huseyin.navigationView";
+	public static final String ID = "jiraClient.navigationView";
 	private int instanceNum = 0;
 	private TreeViewer viewer;
 
