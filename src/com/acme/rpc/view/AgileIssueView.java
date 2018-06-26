@@ -1,6 +1,5 @@
 package com.acme.rpc.view;
 
-import huseyin.SWTUtils;
 
 import java.awt.image.BufferedImage;
 import java.io.IOException;
@@ -35,6 +34,7 @@ import org.eclipse.ui.ISelectionListener;
 import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.part.ViewPart;
 
+import com.acme.rcp.app.SWTUtils;
 import com.acme.rpc.view.NavigationView.TreeObject;
 import com.acme.rpc.view.NavigationView.TreeParent;
 import com.acme.service.entity.AgileIssue;

@@ -3,7 +3,7 @@ Bundle-ManifestVersion: 2
 Bundle-Name: Huseyin
 Bundle-SymbolicName: huseyin; singleton:=true
 Bundle-Version: 1.0.0.qualifier
-Bundle-Activator: huseyin.Activator
+Bundle-Activator: com.acme.rcp.app.Activator
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
  org.eclipse.core.databinding,

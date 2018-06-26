@@ -1,6 +1,5 @@
 package com.acme.rcp.action;
 
-import huseyin.ICommandIds;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,6 +10,7 @@ import org.eclipse.ui.IViewReference;
 import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.IWorkbenchWindow;
 
+import com.acme.rcp.app.ICommandIds;
 import com.acme.rcp.dialog.LoginDialog;
 import com.acme.rpc.view.AgileIssueView;
 import com.acme.rpc.view.NavigationView;
@@ -27,7 +27,7 @@ public class LoginDialogAction extends Action {
 		this.loggedIn = false;
 		this.window = window;
 		setId(ICommandIds.CMD_OPEN_LOGIN);
-		setImageDescriptor(huseyin.Activator.getImageDescriptor("/icons/login.png"));
+		setImageDescriptor(com.acme.rcp.app.Activator.getImageDescriptor("/icons/login.png"));
 	}
 
 	public void run() {

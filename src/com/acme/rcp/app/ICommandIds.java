@@ -1,4 +1,4 @@
-package huseyin;
+package com.acme.rcp.app;
 
 /**
  * Interface defining the application's command IDs.

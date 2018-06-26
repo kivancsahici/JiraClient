@@ -1,4 +1,4 @@
-package huseyin;
+package com.acme.rcp.app;
 
 import org.eclipse.jface.action.Action;
 import org.eclipse.jface.action.GroupMarker;
