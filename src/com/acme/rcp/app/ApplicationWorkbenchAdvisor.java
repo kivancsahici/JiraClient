@@ -1,4 +1,4 @@
-package huseyin;
+package com.acme.rcp.app;
 
 import org.eclipse.ui.application.IWorkbenchWindowConfigurer;
 import org.eclipse.ui.application.WorkbenchAdvisor;

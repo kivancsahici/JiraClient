@@ -1,4 +1,4 @@
-package huseyin;
+package com.acme.rcp.app;
 
 import java.awt.Graphics;
 import java.awt.Image;

@@ -1,4 +1,4 @@
-package huseyin;
+package com.acme.rcp.app;
 
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
