@@ -231,22 +231,23 @@ public class NavigationView extends ViewPart {
 		viewer.setContentProvider(contentProvider);
 		final ViewLabelProvider labelProvider = new ViewLabelProvider();
 		viewer.setLabelProvider(labelProvider);
+		getSite().setSelectionProvider(viewer);
 		// viewer.setInput(createDummyModel());
-
+/*
 		viewer.addDoubleClickListener(new IDoubleClickListener() {
 		    @Override
 		    public void doubleClick(DoubleClickEvent event) {
-		    	/*
-		    	try {
-					AgileIssueView view = (AgileIssueView) PlatformUI.getWorkbench().getActiveWorkbenchWindow().
-							getActivePage().showView(AgileIssueView.ID, Integer.toString(instanceNum++), IWorkbenchPage.VIEW_ACTIVATE);
+		    	
+		    	//try {
+				//	AgileIssueView view = (AgileIssueView) PlatformUI.getWorkbench().getActiveWorkbenchWindow().
+				//			getActivePage().showView(AgileIssueView.ID, Integer.toString(instanceNum++), IWorkbenchPage.VIEW_ACTIVATE);
 					
-					views.updateModel(list.get(0));
+				//	views.updateModel(list.get(0));
 					
-				} catch (PartInitException e) {					
-					e.printStackTrace();
-				}
-		    	*/
+				//} catch (PartInitException e) {					
+				//	e.printStackTrace();
+				//}
+		    	
 		    	
 
 		    	IStatusLineManager manager = getViewSite().getActionBars().getStatusLineManager();
@@ -256,7 +257,7 @@ public class NavigationView extends ViewPart {
 		        //viewer.setExpandedState(selectedNode, !viewer.getExpandedState(selectedNode));
 		        StringBuffer toShow = new StringBuffer();
 				for (Iterator iterator = selection.iterator(); iterator.hasNext();) {
-					Object domain = (/* Model */TreeObject) iterator.next();
+					Object domain = (TreeObject) iterator.next();
 					String value = labelProvider.getText(domain);
 					if(!(domain instanceof TreeParent)) {
 						TreeObject obj = (TreeObject) domain;
@@ -291,6 +292,7 @@ public class NavigationView extends ViewPart {
 				manager.setMessage(toShow.toString());
 		    }
 		});
+		*/
 	}
 
 	/**
