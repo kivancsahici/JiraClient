@@ -197,6 +197,10 @@ public class AgileIssueView extends ViewPart {
 	public void setFocus() {
 		// Set the focus
 	}
+	@Override
+	public void dispose() {
+         getSite().getPage().removeSelectionListener(listener);
+      }
 	/*
 	 * protected DataBindingContext initDataBindings() { DataBindingContext
 	 * bindingContext = new DataBindingContext();
